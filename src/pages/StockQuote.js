@@ -63,7 +63,7 @@ const StockQuote = () => {
               placeholder="e.g., AAPL, GOOGL, MSFT"
               maxLength={5}
             />
-            <small>Try: AAPL, GOOGL, MSFT, or TSLA</small>
+            <small>Example: AAPL, GOOGL, MSFT</small>
           </div>
           <button type="submit" disabled={loading} className="submit-button">
             {loading ? 'Fetching...' : 'Get Quote'}
