@@ -28,7 +28,7 @@ function Navigation() {
       <div className="nav-container">
         <Link to="/" className="nav-logo" onClick={handleLinkClick}>
           Stock Quote
-          <img src={logo} width="50"/>
+          <img className="logo" src={logo}/>
         </Link>
         
         <button 
