@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Navigation.css';
+import logo from "./logo.png"
 
 function Navigation() {
   const { token, user, logout } = useAuth();
@@ -27,6 +28,7 @@ function Navigation() {
       <div className="nav-container">
         <Link to="/" className="nav-logo" onClick={handleLinkClick}>
           Stock Quote App
+          <img src={logo} width="50"/>
         </Link>
         
         <button 
