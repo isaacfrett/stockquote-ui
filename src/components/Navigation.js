@@ -27,7 +27,7 @@ function Navigation() {
     <nav className="navigation">
       <div className="nav-container">
         <Link to="/" className="nav-logo" onClick={handleLinkClick}>
-          Stock Quote App
+          Stock Quote
           <img src={logo} width="50"/>
         </Link>
         
