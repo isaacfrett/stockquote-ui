@@ -92,3 +92,18 @@
 .auth-link a:hover {
   text-decoration: underline;
 }
+
+
+@media (max-width: 480px) {
+  .auth-box {
+    padding: 30px 20px;
+  }
+
+  .auth-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-group input {
+    font-size: 16px;
+  }
+}

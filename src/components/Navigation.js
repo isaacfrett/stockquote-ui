@@ -1,46 +1,73 @@
-// src/components/Navigation.js
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Navigation.css';
-import logo from "./logo.png"
 
-const Navigation = () => {
+function Navigation() {
   const { token, user, logout } = useAuth();
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = async () => {
     await logout();
+    setIsOpen(false);
     navigate('/login');
   };
 
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className="navbar">
+    <nav className="navigation">
       <div className="nav-container">
-        <Link to="/" className="nav-logo">
-          Stock Quote
-          <img className="logo" src={logo}/>
+        <Link to="/" className="nav-logo" onClick={handleLinkClick}>
+          Stock Quote App
         </Link>
-        <div className="nav-menu">
+        
+        <button 
+          className={`hamburger ${isOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+          aria-expanded={isOpen}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div className={`nav-links ${isOpen ? 'open' : ''}`}>
           {token ? (
             <>
-              <Link to="/dashboard" className="nav-link">Dashboard</Link>
-              <Link to="/stock-quote" className="nav-link">Stock Quote</Link>
-              <span className="nav-user">{user?.email}</span>
-              <button onClick={handleLogout} className="nav-button">
+              <Link to="/dashboard" onClick={handleLinkClick}>
+                Dashboard
+              </Link>
+              <Link to="/stock-quote" onClick={handleLinkClick}>
+                Get Quote
+              </Link>
+              <span className="user-email">{user?.email}</span>
+              <button onClick={handleLogout} className="btn-logout">
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="nav-link">Login</Link>
-              <Link to="/signup" className="nav-link">Sign Up</Link>
+              <Link to="/login" onClick={handleLinkClick}>
+                Login
+              </Link>
+              <Link to="/signup" onClick={handleLinkClick}>
+                Sign Up
+              </Link>
             </>
           )}
         </div>
       </div>
     </nav>
   );
-};
+}
 
 export default Navigation;
