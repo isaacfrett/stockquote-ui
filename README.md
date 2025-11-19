@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# stockquote-ui — Stock Quote Front-end (React)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the front-end UI for the StockQuote application. It's a small React single-page app that provides user authentication and simple stock-quote viewing features (dashboard, live quote lookup, signup/login flows).
 
-## Available Scripts
+Key behaviors (contract):
+- Inputs: user credentials (signup/login), ticker symbols for quote lookup
+- Outputs: authenticated user session, dashboard with saved quotes, live quote details
+- Error modes: validation errors on auth forms, network/API errors when fetching quotes
 
-In the project directory, you can run:
+What you'll find here
+- Auth pages: `Login`, `Signup`, session is managed via `AuthContext`.
+- Dashboard: a landing page after login showing saved or recent symbols.
+- Stock Quote: lookup page showing current quote data for a ticker symbol.
 
-### `npm start`
+Tech stack
+- React (Create React App starter)
+- Context API for auth state
+- CSS modules / simple stylesheet per component (see `src/pages` and `src/components`)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Quick start (local)
+1. Install dependencies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install
+```
 
-### `npm test`
+2. Start dev server
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm start
+```
 
-### `npm run build`
+Open http://localhost:3000. The app will reload on changes.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Helpful scripts
+- `npm start` — start dev server
+- `npm test` — run tests (watch mode)
+- `npm run build` — create production build in `build/`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Project layout (important files)
+- `src/index.js` — app entry
+- `src/App.js` — top-level routing and layout
+- `src/context/AuthContext.js` — auth state provider
+- `src/pages/` — `Dashboard.js`, `Login.js`, `Signup.js`, `StockQuote.js`
+- `src/components/Navigation.js` — top navigation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Environment / configuration
+- No special environment variables are required to run the UI in dev mode. If the UI needs to point to a backend API, configure the API base URL in the environment (e.g. `.env` using `REACT_APP_API_URL`).
